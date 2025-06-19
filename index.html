@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arish University for students</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    html, body {
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    body {
+      background: url('imgs/comm.jpg') no-repeat center center/cover;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+    }
+
+    .background-overlay {
+      position: fixed;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+      z-index: -1;
+    }
+
+    .hero {
+      background: transparent;
+      text-align: center;
+      padding: 60px 20px 30px;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+    }
+
+    .grid-container {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      padding: 20px 10px 40px;
+    }
+
+    .grid-item {
+      width: 160px;
+      height: 200px;
+      background-size: cover;
+      background-position: right center;
+      border-radius: 12px;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      z-index: 10;
+    }
+
+    .grid-item.active {
+      transform: scale(1.05) translateY(-5px);
+    }
+
+    .blur-layer {
+      position: absolute;
+      inset: 0;
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      background-color: rgba(0, 0, 0, 0.3);
+      z-index: 1;
+      display: none;
+    }
+
+    .grid-item.active .blur-layer {
+      display: block;
+    }
+
+    .overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+      color: white;
+      text-align: center;
+      border-radius: 12px;
+      z-index: 2;
+      background-color: rgba(0, 0, 0, 0.4);
+    }
+
+    .overlay span {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 6px 10px;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      margin-bottom: 10px;
+    }
+
+    .terms-buttons {
+      display: none;
+      animation: fadeIn 0.4s ease forwards;
+    }
+
+    .terms-buttons button {
+      padding: 8px 12px;
+      margin: 4px;
+      font-size: 0.9rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      background-color: #fff;
+      color: #000;
+      transition: background-color 0.3s;
+    }
+
+    .terms-buttons button:hover {
+      background-color: #ddd;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    footer {
+      background-color: #000000;
+      color: white;
+      text-align: center;
+      padding: 12px 10px;
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: rgb(255, 0, 0);
+    }
+
+    footer div {
+      margin: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="background-overlay"></div>
+
+  <div class="hero">
+    <h1>جامعة العريش<br>كلية التجارة</h1>
+    <p>هذا الموقع مُصمم فقط لمساعدة طلاب الجامعة في الوصول للمحتوى بسهولة</p>
+  </div>
+
+  <div class="grid-container">
+    <!-- الفرقة الأولى -->
+    <div class="grid-item" style="background-image: url('imgs/teg.jpg');" onclick="toggleBlur(this, 'first')">
+      <div class="blur-layer"></div>
+      <div class="overlay">
+        <span>الفرقة الأولى</span>
+        <div id="first" class="terms-buttons">
+          <button onclick="window.open('https://drive.google.com/drive/folders/1HqgMdSu7XHdeZv_GK6_WEeVfc1S-jHGQ?usp=sharing', '_blank')">التيرم الأول</button>
+          <button onclick="window.open('https://drive.google.com/drive/folders/1KFFDl7rlskhaK6GCIu2x0KuWcCxhxtt-?usp=sharing', '_blank')">التيرم الثاني</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- الفرقة الثانية -->
+    <div class="grid-item" style="background-image: url('imgs/teg.jpg');" onclick="toggleBlur(this, 'second')">
+      <div class="blur-layer"></div>
+      <div class="overlay">
+        <span>الفرقة الثانية</span>
+        <div id="second" class="terms-buttons">
+          <button onclick="window.open('https://drive.google.com/drive/folders/1DQUn7BZls3X3LJDtvrlkfHn5e14KCUiI?usp=sharing', '_blank')">التيرم الأول</button>
+          <button onclick="window.open('https://drive.google.com/drive/folders/17Zc7lpX3FbdOHSRYeIw5GOWKJdj4RryF?usp=sharing', '_blank')">التيرم الثاني</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div>Developed by <a href="https://www.facebook.com/share/1AqL2Fcp5h/">Abdallah Hassan</a><br></div>
+    <div>
+      Call me: <a href="https://wa.me/qr/KQXTJJPRV47OI1">01029472254</a>
+    </div>
+  </footer>
+
+  <script>
+    function toggleBlur(item, id) {
+      const allItems = document.querySelectorAll('.grid-item');
+      const allTerms = document.querySelectorAll('.terms-buttons');
+
+      allItems.forEach(el => {
+        if (el !== item) el.classList.remove('active');
+      });
+      allTerms.forEach(term => {
+        if (term.id !== id) term.style.display = 'none';
+      });
+
+      const target = document.getElementById(id);
+      const isActive = item.classList.contains('active');
+
+      if (isActive) {
+        item.classList.remove('active');
+        target.style.display = 'none';
+      } else {
+        item.classList.add('active');
+        target.style.display = 'block';
+      }
+    }
+  </script>
+
+</body>
+</html>
