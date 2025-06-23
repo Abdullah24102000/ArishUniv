@@ -134,6 +134,12 @@
       background-color: #ddd;
     }
 
+    .year-terms {
+      display: none;
+      margin-top: 10px;
+      animation: fadeIn 0.4s ease forwards;
+    }
+
     @keyframes fadeIn {
       from {
         opacity: 0;
@@ -178,8 +184,19 @@
       <div class="overlay">
         <span>الفرقة الأولى</span>
         <div id="first" class="terms-buttons">
-          <button onclick="window.open('https://drive.google.com/drive/folders/1HqgMdSu7XHdeZv_GK6_WEeVfc1S-jHGQ?usp=sharing', '_blank')">التيرم الأول</button>
-          <button onclick="window.open('https://drive.google.com/drive/folders/1KFFDl7rlskhaK6GCIu2x0KuWcCxhxtt-?usp=sharing', '_blank')">التيرم الثاني</button>
+          <button onclick="toggleYears('first-2023', 'first-2024', event)">2023</button>
+          <button onclick="toggleYears('first-2024', 'first-2023', event)">2024</button>
+
+          <!-- روابط سنة 2023 -->
+          <div id="first-2023" class="year-terms">
+            <button onclick="window.open('https://drive.google.com/drive/folders/1HqgMdSu7XHdeZv_GK6_WEeVfc1S-jHGQ?usp=drive_link', '_blank')">التيرم الأول</button>
+            <button onclick="window.open('https://drive.google.com/drive/folders/1KFFDl7rlskhaK6GCIu2x0KuWcCxhxtt-?usp=drive_link', '_blank')">التيرم الثاني</button>
+          </div>
+
+          <!-- روابط سنة 2024 -->
+          <div id="first-2024" class="year-terms">
+            <button onclick="window.open('https://drive.google.com/drive/folders/18Z5LQg_2Z74LrT-jRgzfJvhXik4Q68jG?usp=drive_link', '_blank')">التيرم الثاني</button>
+          </div>
         </div>
       </div>
     </div>
@@ -208,6 +225,7 @@
     function toggleBlur(item, id) {
       const allItems = document.querySelectorAll('.grid-item');
       const allTerms = document.querySelectorAll('.terms-buttons');
+      const allYearTerms = document.querySelectorAll('.year-terms');
 
       allItems.forEach(el => {
         if (el !== item) el.classList.remove('active');
@@ -215,6 +233,7 @@
       allTerms.forEach(term => {
         if (term.id !== id) term.style.display = 'none';
       });
+      allYearTerms.forEach(yt => yt.style.display = 'none');
 
       const target = document.getElementById(id);
       const isActive = item.classList.contains('active');
@@ -226,6 +245,12 @@
         item.classList.add('active');
         target.style.display = 'block';
       }
+    }
+
+    function toggleYears(showId, hideId, event) {
+      event.stopPropagation(); // يمنع تشغيل toggleBlur
+      document.getElementById(showId).style.display = 'block';
+      document.getElementById(hideId).style.display = 'none';
     }
   </script>
 
